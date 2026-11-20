@@ -1,0 +1,28 @@
+{
+  "name": "site-change-pipeline",
+  "version": "1.0.0",
+  "description": "Event-driven website change-request pipeline: Kafka, GraphQL, four small services",
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc -p tsconfig.build.json",
+    "start:intake": "node dist/entry/intake.js",
+    "start:triage": "node dist/entry/triage.js", "start:capacity": "node dist/entry/capacity.js",
+    "start:notifications": "node dist/entry/notifications.js",
+    "dev:all": "tsx src/entry/all.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "graphql": "^17.1.0",
+    "kafkajs": "^2.2.4"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vitest": "^5.1.1"
+  },
+  "type": "module"
+}

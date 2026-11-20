@@ -1,0 +1,11 @@
+flowchart LR
+  C([Client]) -->|GraphQL submitRequest| I[Intake service]
+  I -->|requests.received| K{{Kafka / Redpanda}}
+  K -->|requests.received| T[Triage service]
+  T -->|requests.triaged| K
+  K -->|requests.triaged| CAP[Capacity service]
+  CAP -->|requests.assigned or requests.queued| K
+  K -->|triaged, assigned, queued| I
+  I -->|requests.status| K
+  K -->|requests.status| N[Notifications service]
+  C -->|GraphQL requests / request| I
